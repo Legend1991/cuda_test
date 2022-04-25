@@ -340,7 +340,7 @@ run: build
 testrun: build
 
 clean:
-	rm -f cuda_test cuda_test.o
+	rm -f cuda_test cuda_test.o game.o rng.o
 	rm -rf ./bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)/cuda_test
 
 clobber: clean
