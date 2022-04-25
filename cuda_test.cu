@@ -13,12 +13,12 @@ extern "C" {
 
 const uint32_t LENGTH = MAX_SUITS * MAX_RANKS;
 
-typedef enum
+enum Res
 {
   Win = 0,
   Lose,
   Tie
-} Res;
+};
 
 typedef struct
 {
@@ -240,8 +240,7 @@ void cpu_test(void) {
 
   clock_t start = clock();
 
-  GameRes *gameRes;
-  gameRes = (GameRes *)malloc(sizeof(*gameRes) * 1712304);
+  GameRes *gameRes = new GameRes[1712304];
 
   for (uint16_t p1Idx = 0; p1Idx < P1_HAND_SET_SIZE; p1Idx += 2)
   {
@@ -292,17 +291,17 @@ void cpu_test(void) {
               if (pRank == vRank)
               {
                 ++ties;
-                g->res = Tie;
+                g->res = Res::Tie;
               }
               else if (pRank > vRank)
               {
                 ++pWins;
-                g->res = Win;
+                g->res = Res::Win;
               }
               else
               {
                 ++vWins;
-                g->res = Lose;
+                g->res = Res::Lose;
               }
 
               ++count;
