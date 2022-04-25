@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "game.h": "c",
+    "time.h": "c",
+    "stdio.h": "c"
+  }
+}
