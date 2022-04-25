@@ -249,7 +249,7 @@ void cpu_test(void) {
 
   printf("cpu_test: 4\n");
 
-  GameRes *gameRes = new GameRes[1712304];
+  // GameRes *gameRes = new GameRes[1712304];
 
   printf("cpu_test: 5\n");
 
@@ -296,28 +296,28 @@ void cpu_test(void) {
               int pRank = rankHand(game, &state, 0);
               int vRank = rankHand(game, &state, 1);
 
-              GameRes *g = &gameRes[count];
+              // GameRes *g = &gameRes[count];
 
-              g->boardCards[0] = deck[f1Idx];
-              g->boardCards[1] = deck[f2Idx];
-              g->boardCards[2] = deck[f3Idx];
-              g->boardCards[3] = deck[tIdx];
-              g->boardCards[4] = deck[rIdx];
+              // g->boardCards[0] = deck[f1Idx];
+              // g->boardCards[1] = deck[f2Idx];
+              // g->boardCards[2] = deck[f3Idx];
+              // g->boardCards[3] = deck[tIdx];
+              // g->boardCards[4] = deck[rIdx];
 
               if (pRank == vRank)
               {
                 ++ties;
-                g->res = Res::Tie;
+                // g->res = Res::Tie;
               }
               else if (pRank > vRank)
               {
                 ++pWins;
-                g->res = Res::Win;
+                // g->res = Res::Win;
               }
               else
               {
                 ++vWins;
-                g->res = Res::Lose;
+                // g->res = Res::Lose;
               }
 
               ++count;
