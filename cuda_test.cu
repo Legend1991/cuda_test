@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+extern "C" {
 #include "acpc_server_code/game.h"
+}
 
 // For the CUDA runtime routines (prefixed with "cuda_")
 #include <cuda_runtime.h>
