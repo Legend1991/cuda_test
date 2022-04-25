@@ -6,19 +6,6 @@
 
 const uint32_t LENGTH = MAX_SUITS * MAX_RANKS;
 
-typedef enum
-{
-  Win = 0,
-  Lose,
-  Tie
-} Res;
-
-typedef struct
-{
-  uint8_t boardCards[5];
-  Res res;
-} GameRes;
-
 int main(void)
 {
   // uint8_t p1[2] = {makeCard(12, 2), makeCard(11, 0)};
@@ -60,9 +47,6 @@ int main(void)
 
   clock_t start = clock();
 
-  GameRes *gameRes;
-  gameRes = (GameRes *)malloc(sizeof(*gameRes) * 1712304);
-
   for (uint16_t p1Idx = 0; p1Idx < P1_HAND_SET_SIZE; p1Idx += 2)
   {
     uint8_t p1[2] = {p1HandSet[p1Idx], p1HandSet[p1Idx + 1]};
@@ -101,28 +85,17 @@ int main(void)
               int pRank = rankHand(game, &state, 0);
               int vRank = rankHand(game, &state, 1);
 
-              GameRes *g = &gameRes[count];
-
-              g->boardCards[0] = deck[f1Idx];
-              g->boardCards[1] = deck[f2Idx];
-              g->boardCards[2] = deck[f3Idx];
-              g->boardCards[3] = deck[tIdx];
-              g->boardCards[4] = deck[rIdx];
-
               if (pRank == vRank)
               {
                 ++ties;
-                g->res = Tie;
               }
               else if (pRank > vRank)
               {
                 ++pWins;
-                g->res = Win;
               }
               else
               {
                 ++vWins;
-                g->res = Lose;
               }
 
               ++count;

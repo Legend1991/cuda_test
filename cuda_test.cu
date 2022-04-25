@@ -13,19 +13,6 @@ extern "C" {
 
 const uint32_t LENGTH = MAX_SUITS * MAX_RANKS;
 
-enum Res
-{
-  Win = 0,
-  Lose,
-  Tie
-};
-
-typedef struct
-{
-  uint8_t boardCards[5];
-  Res res;
-} GameRes;
-
 /**
  * CUDA Kernel Device code
  *
@@ -240,8 +227,6 @@ void cpu_test(void) {
 
   clock_t start = clock();
 
-  // GameRes *gameRes = new GameRes[1712304];
-
   for (uint16_t p1Idx = 0; p1Idx < P1_HAND_SET_SIZE; p1Idx += 2)
   {
     uint8_t p1[2] = {p1HandSet[p1Idx], p1HandSet[p1Idx + 1]};
@@ -280,28 +265,17 @@ void cpu_test(void) {
               int pRank = rankHand(game, &state, 0);
               int vRank = rankHand(game, &state, 1);
 
-              // GameRes *g = &gameRes[count];
-
-              // g->boardCards[0] = deck[f1Idx];
-              // g->boardCards[1] = deck[f2Idx];
-              // g->boardCards[2] = deck[f3Idx];
-              // g->boardCards[3] = deck[tIdx];
-              // g->boardCards[4] = deck[rIdx];
-
               if (pRank == vRank)
               {
                 ++ties;
-                // g->res = Res::Tie;
               }
               else if (pRank > vRank)
               {
                 ++pWins;
-                // g->res = Res::Win;
               }
               else
               {
                 ++vWins;
-                // g->res = Res::Lose;
               }
 
               ++count;
