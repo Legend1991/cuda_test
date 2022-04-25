@@ -255,6 +255,7 @@ void cpu_test(void) {
 
   for (uint16_t p1Idx = 0; p1Idx < P1_HAND_SET_SIZE; p1Idx += 2)
   {
+    printf("cpu_test: 5.1\n");
     uint8_t p1[2] = {p1HandSet[p1Idx], p1HandSet[p1Idx + 1]};
 
     state.holeCards[0][0] = p1[0];
@@ -262,6 +263,8 @@ void cpu_test(void) {
 
     const uint32_t DECK_SIZE = 48;
     uint8_t deck[DECK_SIZE];
+
+    printf("cpu_test: 5.2\n");
 
     for (uint8_t c = 0, i = 0; c < LENGTH; ++c)
     {
@@ -271,6 +274,8 @@ void cpu_test(void) {
       deck[i] = c;
       ++i;
     }
+
+    printf("cpu_test: 5.3 start\n");
 
     for (uint8_t f1Idx = 0; f1Idx < DECK_SIZE; ++f1Idx)
     {
@@ -321,6 +326,8 @@ void cpu_test(void) {
         }
       }
     }
+
+    printf("cpu_test: 5.3 end\n");
   }
 
   printf("cpu_test: 6\n");
